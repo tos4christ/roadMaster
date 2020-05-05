@@ -6,7 +6,8 @@ const ContactAddress = () => {
       <div className="contact-address">
         <h4>Address</h4>
         <p>
-          EPIC tower, 232 Ikorodu RD, Ilupeju, Lagos. <br />
+          Andela - Lagos Office, EPIC tower, 232 Ikorodu RD, Ilupeju, Lagos.{" "}
+          <br />
           <br />
           <span className="text-info">You can also reach us on:</span>
         </p>
