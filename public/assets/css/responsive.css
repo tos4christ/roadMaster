@@ -119,7 +119,7 @@
   }
   .single-about-box:hover i::before,
   .single-about-box.active i::before {
-    color: #0074da;
+    color: #006600;
   }
   .about-area {
     padding-bottom: 65px;
