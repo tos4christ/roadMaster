@@ -8,7 +8,7 @@ const Header = () => {
     const { scrollTop } = document.documentElement;
     if (scrollTop > 128) {
       setBg(
-        "linear-gradient(to right, #000529 1%, #002055 24%, #005db5 67%, #0074d9 100%)"
+        "linear-gradient(to right,#001a00 1%, #006600 24%, #009900 67%, #00b300 100% )"
       );
     } else {
       setBg("inherit");
@@ -19,7 +19,6 @@ const Header = () => {
   const [bg, setBg] = useState("inherit");
   const toggle = () => {
     setShow((prevSate) => !prevSate);
-    console.log(history);
   };
   const toggleStyle = {
     display: show ? "block" : "none",
@@ -29,6 +28,7 @@ const Header = () => {
   const headerStyle = {
     background: bg,
   };
+  const route = history.location.pathname;
 
   return (
     <header className="header" style={headerStyle}>
@@ -64,11 +64,14 @@ const Header = () => {
                   style={toggleStyle}
                 >
                   <li>
-                    <Link className="nav-link active" to="/">
+                    <Link
+                      className={route === "/" ? "nav-link active" : "nav-link"}
+                      to="/"
+                    >
                       Home
                     </Link>
                   </li>
-                  {history.location.pathname === "/" ? (
+                  {route === "/" ? (
                     <>
                       <li>
                         <ScrollLink
@@ -108,7 +111,10 @@ const Header = () => {
                     </>
                   )}
                   <li>
-                    <Link className="nav-link" to="/contact-us">
+                    <Link
+                      className={route === "/" ? "nav-link" : "nav-link active"}
+                      to="/contact-us"
+                    >
                       Contact Us
                     </Link>
                   </li>
@@ -118,11 +124,14 @@ const Header = () => {
             <div className="mainmenu">
               <ul id="primary-menu">
                 <li>
-                  <Link className="nav-link active" to="/">
+                  <Link
+                    className={route === "/" ? "nav-link active" : "nav-link"}
+                    to="/"
+                  >
                     Home
                   </Link>
                 </li>
-                {history.location.pathname === "/" ? (
+                {route === "/" ? (
                   <>
                     <li>
                       <ScrollLink
@@ -162,7 +171,10 @@ const Header = () => {
                   </>
                 )}
                 <li>
-                  <Link className="nav-link" to="/contact-us">
+                  <Link
+                    className={route === "/" ? "nav-link" : "nav-link active"}
+                    to="/contact-us"
+                  >
                     Contact Us
                   </Link>
                 </li>
