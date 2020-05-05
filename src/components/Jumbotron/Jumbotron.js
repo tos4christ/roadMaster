@@ -8,7 +8,7 @@ const Jumbotron = () => {
         <div className="row">
           <div className="col-lg-7">
             <div className="hero-area-content">
-              <h1>Road Safety is our upmost priority</h1>
+              <h1>Road Safety is our utmost priority</h1>
               <p>
                 RoadMaster helps safety and security personnels respond swiftly
                 to unplanned events; accidents, crashes, explosions, etc. It
