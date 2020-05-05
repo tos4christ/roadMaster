@@ -34,12 +34,13 @@ Description: Responsive HTML5 / CSS3 One-page Landing App Template.
 /*----------------------------------
 --------- THEME DEFAULT CSS --------
 ----------------------------------*/
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900");
+/* @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900"); */
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 body {
   line-height: 24px;
   font-size: 14px;
   color: #666666;
-  font-family: "Poppins", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 400;
 }
 
@@ -549,7 +550,7 @@ input::-webkit-input-placeholder {
 }
 .single-about-box.active i::before,
 .single-about-box:hover i::before {
-  color: #b3b300;
+  color: #cccccc;
 }
 .single-about-box h4 {
   margin: 25px 0 15px;
