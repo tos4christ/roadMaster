@@ -344,6 +344,9 @@ input::-webkit-input-placeholder {
   z-index: 99;
   padding: 18px 0;
 }
+.pointer {
+  cursor: pointer;
+}
 .logo a {
   color: #ffffff;
   font-size: larger;

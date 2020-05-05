@@ -1,16 +1,12 @@
-A Github Authentication app made with react. It serves as a guide for react developers who intends integrating react with OAuth provided by github.
+RoadMaster helps safety and security personnels respond swiftly to unplanned events; accidents, crashes, explosions, etc. It also suggests alternative routes to avoid unnessecary traffic caused during these disasters. RoadMaster is safe and easy to use.
 
 ### Live
 
-https://gituth.herokuapp.com/
+https://road-master.netlify.app/
 
 ### Usage and Setup
 
 - Clone this repo. Go into the root folder and run `npm install` to install all necessary dependencies.
-- Create a .env file in the root folder of this project.
-- Go to login to your github account, navigate to Settings > Developer Settings > OAuth Apps.
-- Create a new OAuth App and get a free client secret and client ID.
-- Set the credentials you got as REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET and the REACT_APP_REDIRECT_URI you filled while creating the OAuth in the env file.
 
 ## Available Scripts
 
@@ -32,10 +28,6 @@ Launches the test runner in the interactive watch mode.<br>
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
-
-### Credit
-
-Auth provided by Github
 
 ### Like this project?
 

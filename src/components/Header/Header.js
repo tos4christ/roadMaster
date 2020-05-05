@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Scroll from "react-scroll";
+const ScrollLink = Scroll.Link;
 
 const Header = () => {
   window.addEventListener("scroll", () => {
@@ -12,10 +14,12 @@ const Header = () => {
       setBg("inherit");
     }
   });
+  const history = useHistory();
   const [show, setShow] = useState(false);
   const [bg, setBg] = useState("inherit");
   const toggle = () => {
     setShow((prevSate) => !prevSate);
+    console.log(history);
   };
   const toggleStyle = {
     display: show ? "block" : "none",
@@ -64,16 +68,45 @@ const Header = () => {
                       Home
                     </Link>
                   </li>
-                  <li>
-                    <Link className="nav-link" to="/">
-                      How It Works
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="nav-link" to="/">
-                      Feature
-                    </Link>
-                  </li>
+                  {history.location.pathname === "/" ? (
+                    <>
+                      <li>
+                        <ScrollLink
+                          to="HIW"
+                          spy={true}
+                          smooth={true}
+                          duration={500}
+                          className="nav-link text-light pointer"
+                        >
+                          How It Works
+                        </ScrollLink>
+                      </li>
+                      <li>
+                        <ScrollLink
+                          to="features"
+                          spy={true}
+                          smooth={true}
+                          duration={500}
+                          className="nav-link text-light pointer"
+                        >
+                          Features
+                        </ScrollLink>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <Link className="nav-link" to="/">
+                          How It Works
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="nav-link" to="/">
+                          Features
+                        </Link>
+                      </li>
+                    </>
+                  )}
                   <li>
                     <Link className="nav-link" to="/contact-us">
                       Contact Us
@@ -89,16 +122,45 @@ const Header = () => {
                     Home
                   </Link>
                 </li>
-                <li>
-                  <Link className="nav-link" to="/">
-                    How It Works
-                  </Link>
-                </li>
-                <li>
-                  <Link className="nav-link" to="/">
-                    Feature
-                  </Link>
-                </li>
+                {history.location.pathname === "/" ? (
+                  <>
+                    <li>
+                      <ScrollLink
+                        to="HIW"
+                        spy={true}
+                        smooth={true}
+                        duration={500}
+                        className="nav-link text-light pointer"
+                      >
+                        How It Works
+                      </ScrollLink>
+                    </li>
+                    <li>
+                      <ScrollLink
+                        to="features"
+                        spy={true}
+                        smooth={true}
+                        duration={500}
+                        className="nav-link text-light pointer"
+                      >
+                        Features
+                      </ScrollLink>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link className="nav-link" to="/">
+                        How It Works
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="nav-link" to="/">
+                        Features
+                      </Link>
+                    </li>
+                  </>
+                )}
                 <li>
                   <Link className="nav-link" to="/contact-us">
                     Contact Us
