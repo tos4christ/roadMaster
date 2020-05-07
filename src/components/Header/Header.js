@@ -15,16 +15,42 @@ const Header = () => {
     }
   });
   const history = useHistory();
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState({
+    display: "none",
+    transition: "opacity 1s ease-in",
+    opacity: 0,
+  });
   const [bg, setBg] = useState("inherit");
   const toggle = () => {
-    setShow((prevSate) => !prevSate);
+    if (show.display === "none") {
+      setShow({
+        ...show,
+        display: "block",
+        opacity: 0,
+      });
+      setTimeout(() => {
+        setShow({
+          ...show,
+          display: "block",
+          opacity: 1,
+        });
+      }, 500);
+    } else {
+      setShow({
+        ...show,
+        display: "block",
+        opacity: 0,
+      });
+      setTimeout(() => {
+        setShow({
+          ...show,
+          display: "none",
+          opacity: 0,
+        });
+      }, 1000);
+    }
   };
-  const toggleStyle = {
-    display: show ? "block" : "none",
-    transition: "width 2s",
-    transitionTimingFunction: "ease-in",
-  };
+
   const headerStyle = {
     background: bg,
   };
@@ -36,10 +62,7 @@ const Header = () => {
         <div className="row flexbox-center">
           <div className="col-lg-2 col-md-3 col-6">
             <div className="logo move">
-              <Link to="/">
-                {/* <img src="assets/img/logo.png" alt="logo" /> */}
-                ROADMASTER
-              </Link>
+              <Link to="/">ROADMASTER</Link>
             </div>
           </div>
           <div className="col-lg-10 col-md-9 col-6">
@@ -61,7 +84,7 @@ const Header = () => {
                   className="slicknav_nav slicknav_hidden"
                   aria-hidden="true"
                   role="menu"
-                  style={toggleStyle}
+                  style={show}
                 >
                   <li>
                     <Link
