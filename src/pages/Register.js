@@ -1,5 +1,7 @@
 import React from "react";
-import signupHead from "../assets/img/signup-head.JPG";
+import Text from "../components/Inputs/Text";
+import Button from "../components/Inputs/Button";
+import Link from "../components/Inputs/Links";
 
 const Register = () => {
   return (
@@ -7,13 +9,19 @@ const Register = () => {
       <div className="row my-4">
         <div className="col-sm-4 mx-auto mt-4 pt-4 bg-white shadow">
           <div className="signup-bg"></div>
-          <img src={signupHead} alt="banner" className="signup-head" />
           <form className="mt-3" action="" method="post">
+            <Text
+              placeholder="Name of Unit"
+              type="text"
+              name="name"
+              icon="fa fa-user"
+            />
             <div class="input-group mb-3 border-bottom">
               <select class="form-control custom-select border-0 ">
                 <option>Choose Designation</option>
                 <option>Health Workers</option>
                 <option>Security Personnels</option>
+                <option>Fire Service</option>
               </select>
               <div class="input-group-append">
                 <span
@@ -79,111 +87,45 @@ const Register = () => {
                 </span>
               </div>
             </div>
-            <div class="input-group mb-3 border-bottom">
-              <input
-                className="form-control border-0"
-                placeholder="City"
-                type="text"
-                name="city"
-                id=""
-              />
-              <div class="input-group-append">
-                <span
-                  class="input-group-text bg-none border-0"
-                  id="basic-addon2"
-                >
-                  <span className="fa fa-map-marker"></span>
-                </span>
-              </div>
-            </div>
-            <div class="input-group mb-3 border-bottom">
-              <input
-                className="form-control border-0"
-                placeholder="Emergency Number"
-                type="text"
-                name="number"
-                id=""
-              />
-              <div class="input-group-append">
-                <span
-                  class="input-group-text bg-none border-0"
-                  id="basic-addon2"
-                >
-                  <span className="fa fa-phone"></span>
-                </span>
-              </div>
-            </div>
-            <div class="input-group mb-3 border-bottom">
-              <input
-                className="form-control border-0"
-                placeholder="Official email"
-                type="email"
-                name="city"
-                id=""
-              />
-              <div class="input-group-append">
-                <span
-                  class="input-group-text bg-none border-0"
-                  id="basic-addon2"
-                >
-                  <span className="fa fa-envelope"></span>
-                </span>
-              </div>
-            </div>
-            <div class="input-group mb-3 border-bottom">
-              <input
-                className="form-control border-0"
-                placeholder="Password"
-                type="password"
-                name="city"
-                id=""
-              />
-              <div class="input-group-append">
-                <span
-                  class="input-group-text bg-none border-0"
-                  id="basic-addon2"
-                >
-                  <span className="fa fa-lock"></span>
-                </span>
-              </div>
-            </div>
-            <div class="input-group mb-3 border-bottom">
-              <input
-                className="form-control border-0"
-                placeholder="Re-enter password"
-                type="password"
-                name="city"
-                id=""
-              />
-              <div class="input-group-append">
-                <span
-                  class="input-group-text bg-none border-0"
-                  id="basic-addon2"
-                >
-                  <span className="fa fa-lock"></span>
-                </span>
-              </div>
-            </div>
-            <div className="d-flex">
-              <p>
-                Alredy Registered?{" "}
-                <a href="/login" className="text-primary ">
-                  Login
-                </a>
-              </p>
-              <a href="/" className="text-success ml-auto">
-                Back to home page
-              </a>
-            </div>
+
+            <Text
+              placeholder="City"
+              type="text"
+              name="city"
+              icon="fa fa-map-marker"
+            />
+            <Text
+              placeholder="Emergency Number"
+              type="number"
+              name="number"
+              icon="fa fa-phone"
+            />
+            <Text
+              placeholder="Official Email"
+              type="email"
+              name="email"
+              icon="fa fa-envelope"
+            />
+            <Text
+              placeholder="Password"
+              type="password"
+              name="paassword1"
+              icon="fa fa-lock"
+            />
+            <Text
+              placeholder="Re-enter password"
+              type="password"
+              name="paassword2"
+              icon="fa fa-lock"
+            />
+
+            <Link
+              question="Already Registered? "
+              link="Login"
+              linkTo="/login"
+            />
           </form>
-          <div className="lower-btn">
-            <button
-              className="btn btn-r mb-0 bg-success text-light px-4 py-2"
-              type="submit"
-            >
-              Submit
-            </button>
-          </div>
+          <Button text="Sign Up" />
         </div>
       </div>
     </div>
