@@ -1838,10 +1838,22 @@ h4.post-title a {
 --------- BLOG DETAILS CSS CSS END ---------
 ---------------------------------------*/
 
-Login .responders-bg {
+.responders-bg {
   background-color: #fff;
+  height: 100vh;
 }
-.signup-head {
+
+.signup-bg {
+  background: url("../img/signup-head.JPG");
+  height: 250px;
+  background-size: contain;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.login-bg {
+  background: url("../img/login-head.JPG");
+  height: 250px;
+  background-size: contain;
   margin-left: -15px;
   margin-right: -15px;
 }
