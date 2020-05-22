@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import handMockUp from "../../assets/img/hand-mockup.png";
 
 const Jumbotron = () => {
   return (
@@ -31,7 +32,7 @@ const Jumbotron = () => {
           </div>
           <div className="col-lg-5">
             <div className="hand-mockup text-lg-left text-center">
-              <img src="assets/img/hand-mockup.png" alt="Hand Mockup" />
+              <img src={handMockUp} alt="Hand Mockup" />
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../Footer/Footer";
 import { Element } from "react-scroll";
+import feature from "../../assets/img/feature.png";
 
 const Features = () => {
   return (
@@ -51,7 +52,7 @@ const Features = () => {
             </div>
             <div className="col-lg-4">
               <div className="single-feature-box text-center jump">
-                <img src="assets/img/feature.png" alt="feature" />
+                <img src={feature} alt="feature" />
               </div>
             </div>
             <div className="col-lg-4">

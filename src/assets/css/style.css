@@ -340,6 +340,13 @@ input::-webkit-input-placeholder {
   color: #666;
 }
 
+.shadow {
+  box-shadow: 0 0 5px #ccc;
+}
+.bg-white {
+  background-color: #fff;
+}
+
 /*--------------------------------------
 -------- HEADER AREA CSS START --------
 ---------------------------------------*/
@@ -1830,3 +1837,20 @@ h4.post-title a {
 /*--------------------------------------
 --------- BLOG DETAILS CSS CSS END ---------
 ---------------------------------------*/
+
+Login .responders-bg {
+  background-color: #fff;
+}
+.signup-head {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.bg-none {
+  background-color: inherit;
+}
+.btn-r {
+  border-radius: 15px 15px 0 0;
+}
+.lower-btn {
+  padding-left: 40%;
+}
