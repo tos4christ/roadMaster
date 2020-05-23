@@ -1847,11 +1847,13 @@ h4.post-title a {
   background: url("../img/signup-head.JPG");
   height: 350px;
   background-size: contain;
+  background-repeat: no-repeat;
 }
 .login-bg {
   background: url("../img/login-head.JPG");
   height: 250px;
   background-size: contain;
+  background-repeat: no-repeat;
 }
 .bg-none {
   background-color: inherit;
