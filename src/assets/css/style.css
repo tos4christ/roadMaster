@@ -362,7 +362,7 @@ input::-webkit-input-placeholder {
 .pointer {
   cursor: pointer;
 }
-.logo a {
+/* .logo a {
   color: #ffffff;
   font-size: larger;
   font-style: normal;
@@ -371,7 +371,7 @@ input::-webkit-input-placeholder {
   border-top: 3px solid yellow;
   border-bottom: 3px solid yellow;
   padding: 5px;
-}
+} */
 .move a {
   position: relative;
   animation-name: gentle-move;

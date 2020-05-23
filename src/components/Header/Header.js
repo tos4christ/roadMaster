@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Scroll from "react-scroll";
+import mainLogo from "../../assets/img/main-logo.JPG";
 const ScrollLink = Scroll.Link;
 
 const Header = () => {
@@ -62,7 +63,9 @@ const Header = () => {
         <div className="row flexbox-center">
           <div className="col-lg-2 col-md-3 col-6">
             <div className="logo move">
-              <Link to="/">ROADMASTER</Link>
+              <a href="/">
+                <img src={mainLogo} alt="logo" />
+              </a>
             </div>
           </div>
           <div className="col-lg-10 col-md-9 col-6">

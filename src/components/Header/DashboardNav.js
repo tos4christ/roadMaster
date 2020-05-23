@@ -57,11 +57,11 @@ const DashboardNav = ({ body }) => {
             {" "}
             <span className="fa fa-car"></span> Crashes
           </a>
-          <a href="/">
+          <a href>
             {" "}
             <span className="fa fa-institution"></span> Accident Reports
           </a>
-          <a href="/">
+          <a href>
             {" "}
             <span className="fa fa-list"> </span> Summary
           </a>

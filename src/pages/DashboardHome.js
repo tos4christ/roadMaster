@@ -10,7 +10,7 @@ const DashboardHome = () => {
         <div className='bg-white shadow m-1 p-3'>
           <AccidentAreas/>
         </div>
-        <div className="row mt-4">
+        {/* <div className="row mt-4">
           <div className="col-sm-6 ">
             <div className="bg-white shadow m-1 p-3"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam quas, non molestias voluptate
             vero veniam! </p></div>
@@ -21,11 +21,11 @@ const DashboardHome = () => {
             vero veniam! </p></div>
 
           </div>
-          </div>
+          </div> */}
       </div>
       <div className="col-sm-8">
         <div className='bg-white shadow m-1 p-3'><AccidentRep/></div>
-        <div className="row mt-4">
+        {/* <div className="row mt-4">
           <div className="col-sm-6 ">
             <div className="bg-white shadow m-1 p-3"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam quas, non molestias voluptate
              vero veniam! In aliquid provident quisquam eius. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, officiis,
@@ -44,7 +44,7 @@ const DashboardHome = () => {
              natus magni delectus vero ut.</p></div>
             
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   </div>
