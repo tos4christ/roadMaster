@@ -1870,7 +1870,7 @@ h4.post-title a {
 }
 .sidenav {
   height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
+  width: 250px; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
@@ -1883,17 +1883,25 @@ h4.post-title a {
 
 /* The navigation menu links */
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 20px;
+  border-left: 5px solid inherit;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
   color: #818181;
   display: block;
   transition: 0.3s;
 }
+.sidenav .active {
+  border-left: 5px solid green;
+  background: yellowgreen;
+  color: #fff;
+}
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-  color: #f1f1f1;
+  border-left: 5px solid yellowgreen;
+  background: green;
+  color: #fff;
 }
 
 /* Position and style the close button (top right corner) */
@@ -1908,9 +1916,11 @@ h4.post-title a {
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left 0.5s;
-  padding: 20px;
+  padding-left: 250px;
 }
-
+.toggle {
+  display: none;
+}
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav {
@@ -1918,5 +1928,16 @@ h4.post-title a {
   }
   .sidenav a {
     font-size: 18px;
+  }
+}
+@media screen and (max-width: 960px) {
+  #main {
+    padding-left: 0;
+  }
+  .sidenav {
+    width: 0;
+  }
+  .toggle {
+    display: block;
   }
 }
