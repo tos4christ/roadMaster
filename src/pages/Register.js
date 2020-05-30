@@ -95,6 +95,12 @@ const Register = () => {
               icon="fa fa-map-marker"
             />
             <Text
+              placeholder="Geolocation"
+              type="text"
+              name="geolocation"
+              icon="fa fa-map-marker"
+            />
+            <Text
               placeholder="Emergency Number"
               type="number"
               name="number"
