@@ -8,6 +8,17 @@ import DashboardHome from "./pages/DashboardHome";
 import UserLogin from "./pages/UserLogin"
 import DashboardCrashes from "./pages/DashboardCrashes";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import socket from './utility/socketioConnection';
+
+ // socket.io implementation
+ const unitName = localStorage.getItem('nameOfUnit');
+ socket.on(unitName, (data) => {
+   console.log(data);
+   const { accidentLocation } = data;
+   const message = `${accidentLocation.lat}, ${accidentLocation.lon}`;
+   alert(`There is an accident at this location: ${message}`);
+   // response.append(`<p> There is an accident at this location: ${message} </p>`);
+ });
 
 const App = () => {
   return (

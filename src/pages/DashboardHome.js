@@ -2,8 +2,16 @@ import React from "react";
 import DashboardNav from '../components/Header/DashboardNav';
 import AccidentAreas from '../components/Charts/AccidentAreas';
 import AccidentRep from '../components/Charts/AccidentsRep';
+import socket from '../utility/socketioConnection';
+
+
 
 const DashboardHome = () => {
+  socket.on('responderNameChange', (data) => {
+    alert(data);
+    console.log(data, 'dashhome 1');
+  });
+
   const body = <div className='container-fluid' >
     <div className="row my-4 pt-4 text-justify">
       <div className="col-sm-4">

@@ -3,22 +3,26 @@ import { useHistory } from "react-router-dom";
 import Text from "../components/Inputs/Text";
 import Button from "../components/Inputs/Button";
 import Link from "../components/Inputs/Links";
+import socket from "../utility/socketioConnection";
 
 const Login = () => {
   const history = useHistory();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-
   const changeEmail = (email) => {
     setEmail(email);
+    localStorage.setItem('responseSocketEmail', email);
   }
   const changePassword = (password) => {
     setPassword(password);
+    localStorage.setItem('responseSocketPassword', password);
   }
-
   const handleSubmission = (e) => {
     e.preventDefault();
     const url = "https://covid-19-tos4christ.herokuapp.com/api/v1/on-covid-19/responder/signin";
+    if(email === "") {
+      return;
+    }
     const data = {email, password};
     fetch(url, {
       method: 'POST',
@@ -30,7 +34,8 @@ const Login = () => {
     })
     .then( res => res.json())
     .then( response => {
-      console.log(response);
+      localStorage.setItem('nameOfUnit', response.data.responderName);
+      socket.emit('responderSignin', {nameOfUnit: response.data.responderName});
       history.push('/dashboard');
     })
     .catch( error => console.error(error.message))
@@ -61,9 +66,10 @@ const Login = () => {
               link="Signup"
               linkTo="/register"
             />
-            <Button 
+            <Button
+            id=''
             text={"Login"}
-            onClick={ () => console.log(true)}
+            onClick={ () => 'done'}
              />
           </form>
         </div>

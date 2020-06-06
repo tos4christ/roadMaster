@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import ls from 'local-storage';
 import Text from "../components/Inputs/Text";
 import Button from "../components/Inputs/Button";
 import Link from "../components/Inputs/Links";
+import socket from "../utility/socketioConnection";
 
 const UserLogin = () => {
   const history = useHistory();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-
   const changeEmail = (email) => {
     setEmail(email);
+    localStorage.setItem('userSocketEmail', email);
   }
   const changePassword = (password) => {
     setPassword(password);
+    localStorage.setItem('userSocketPassword', password);
   }
-
   const handleSubmission = (e) => {
     e.preventDefault();
     const url = "https://covid-19-tos4christ.herokuapp.com/api/v1/on-covid-19/signin";
     const data = {email, password};
+    console.log(data);
     fetch(url, {
       method: 'POST',
       mode: 'cors',
@@ -31,8 +32,9 @@ const UserLogin = () => {
     })
     .then( res => res.json())
     .then( response => {
-      console.log(response);
-      ls.set('userId', response.data.userId)
+      localStorage.setItem('userId', response.data.userId);
+      socket.emit('userSignin', {name: response.data.userName})
+      // ls.set('userId', response.data.userId)
       history.push('/dashboard');
     })
     .catch( error => console.error(error.message))
@@ -64,6 +66,7 @@ const UserLogin = () => {
               linkTo="/user-register"
             />
             <Button 
+            id=''
             text={"Login"}
             onClick={ () => console.log(true)}
              />

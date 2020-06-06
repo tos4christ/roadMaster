@@ -2,11 +2,65 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/img/logo.JPG";
 import rlogo from "../../assets/img/responderLogo.JPG";
+import socket from "../../utility/socketioConnection";
 
 const DashboardNav = ({ body }) => {
   const history = useHistory();
   const [toggle, setToggle] = useState(false);
   const route = history.location.pathname;
+
+  // Sending the SOS button action
+  function sendSOS() {
+    // onsubmit function to relate with backend api for database purposes
+    function SosPost(accidentLocation, description, userId) {
+      const url = "http://localhost:5000/api/v1/on-covid-19/sos";
+      const data = {
+        userId,
+        reportType: 'SOS',
+        lat: accidentLocation.lat,
+        lon: accidentLocation.lon,
+        description: description
+      }
+      fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.json())
+      .then(response => console.log(response))
+      .catch(e => console.error(e));
+      
+    }  
+    function forwardToServer(accidentLocation, userId) {    
+      socket.emit('sos', { accidentLocation, userId });
+      SosPost(accidentLocation, 'Accident', userId);
+    }  
+    function sendPosition(position) {
+      const accidentLocation = {
+        lat: position.coords.latitude,
+        lon: position.coords.longitude
+      };
+      const userId = localStorage.getItem('userId');
+      forwardToServer(accidentLocation, userId);
+    }  
+    function handleError(err) {
+      const error = new Error('Device does not support geolocation');
+      console.error(error.message, err);
+    }  
+    // Try HTML5 geolocation
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        sendPosition,
+        handleError
+      );
+    } else {
+      const err = new Error('Device does not support geolocation')
+      handleError(err);
+    }  
+  }
 
   const changeToggle = () => {
     if (!toggle) {
@@ -88,6 +142,12 @@ const DashboardNav = ({ body }) => {
             style={{ width: 200 }}
           >
             <h3 className="">Responders Dashboard</h3>
+          </div>
+          <div>
+            <button type="button" onClick={sendSOS} style={{borderRadius: '50%', width: '70px', height: '70px'}}>
+                S.O.S
+            </button>
+            <span id="display"></span>
           </div>
           <div className="ml-auto d-flex " id="navbarSupportedContent">
             <a href>
