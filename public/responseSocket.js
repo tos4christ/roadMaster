@@ -9,10 +9,11 @@ $(() => {
     const response = $('#response');
   
     socket.on('response', (data) => {
-      const { accidentLocation } = data.data.data;
-      console.log(Object.keys(data), 'this is it');
+      const { accidentLocation } = data.data;
+      console.log(data.data);
       const message = `${accidentLocation.lat}, ${accidentLocation.lng}`;
-      response.append(`<p> There is an accident at this location: ${message} </p>`);
+      alert(`There is an accident at this location: ${message}`);
+      // response.append(`<p> There is an accident at this location: ${message} </p>`);
     });
   });
   
