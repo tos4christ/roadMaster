@@ -152,6 +152,14 @@ const Header = () => {
                       Responders
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      className={route === "/" ? "nav-link" : "nav-link active"}
+                      to="/user-login"
+                    >
+                      Users
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -218,6 +226,14 @@ const Header = () => {
                     to="/login"
                   >
                     Responders
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={route === "/" ? "nav-link" : "nav-link active"}
+                    to="/user-login"
+                  >
+                    Users
                   </Link>
                 </li>
                 <li className="">
