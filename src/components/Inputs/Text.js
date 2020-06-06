@@ -1,6 +1,7 @@
 import React from "react";
 
-const Text = ({ placeholder, type, name, icon }) => {
+const Text = ({ placeholder, type, name, icon, nameChange }) => {
+
   return (
     <div className="input-group mb-3 border-bottom">
       <input
@@ -8,6 +9,7 @@ const Text = ({ placeholder, type, name, icon }) => {
         placeholder={placeholder}
         type={type}
         name={name}
+        onChange={ e => nameChange(e.target.value)}
       />
       <div className="input-group-append">
         <span className="input-group-text bg-none border-0" id="basic-addon2">
