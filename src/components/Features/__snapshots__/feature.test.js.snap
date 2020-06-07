@@ -106,7 +106,7 @@ exports[`renders features component 1`] = `
           >
             <img
               alt="feature"
-              src="assets/img/feature.png"
+              src="feature.png"
             />
           </div>
         </div>

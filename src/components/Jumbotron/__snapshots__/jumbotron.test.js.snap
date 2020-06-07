@@ -58,7 +58,7 @@ exports[`renders jumbotron 1`] = `
         >
           <img
             alt="Hand Mockup"
-            src="assets/img/hand-mockup.png"
+            src="hand-mockup.png"
           />
         </div>
       </div>

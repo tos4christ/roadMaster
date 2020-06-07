@@ -6,8 +6,10 @@ import Register from "./pages/Register";
 import UserRegister from "./pages/UserRegister";
 import DashboardHome from "./pages/DashboardHome";
 import DashboardHomeUser from "./pages/DashboardHomeUser";
-import UserLogin from "./pages/UserLogin"
+import BuyCoins from "./pages/BuyCoins";
+import UserLogin from "./pages/UserLogin";
 import DashboardCrashes from "./pages/DashboardCrashes";
+import DashboardReports from "./pages/DashboardReports";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
@@ -38,8 +40,14 @@ const App = () => {
         <Route path="/user-dashboard">
           <DashboardHomeUser />
         </Route>
+        <Route path="/buy-coins">
+          <BuyCoins />
+        </Route>
         <Route path="/crashes">
           <DashboardCrashes />
+        </Route>
+        <Route path="/reports">
+          <DashboardReports />
         </Route>
       </Switch>
     </Router>

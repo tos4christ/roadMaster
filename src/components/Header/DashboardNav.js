@@ -3,26 +3,23 @@ import { useHistory } from "react-router-dom";
 import logo from "../../assets/img/logo.JPG";
 import rlogo from "../../assets/img/responderLogo.JPG";
 import socket from "../../utility/socketioConnection";
-import emergency from "../../assets/audio/emergency_alert.mp3"
 
 const DashboardNav = ({ body }) => {
   const history = useHistory();
   const [toggle, setToggle] = useState(false);
   const route = history.location.pathname;
 
-   // socket.io implementation
- const unitName = localStorage.getItem('nameOfUnit');
- const audio = new Audio(emergency);
- socket.on(unitName, (data) => {
-   const { accidentLocation, user } = data;
-   const message = `${accidentLocation.lat}, ${accidentLocation.lon}`;
-   audio.play();
-   alert(`There is an accident at this location: ${message}`);
-   alert(`These are the user's details
+  // socket.io implementation
+  const unitName = localStorage.getItem("nameOfUnit");
+  socket.on(unitName, (data) => {
+    const { accidentLocation, user } = data;
+    const message = `${accidentLocation.lat}, ${accidentLocation.lon}`;
+    alert(`There is an accident at this location: ${message}`);
+    alert(`These are the user's details
             bloodType: ${user.bloodType}
           `);
-   // response.append(`<p> There is an accident at this location: ${message} </p>`);
- });
+    // response.append(`<p> There is an accident at this location: ${message} </p>`);
+  });
 
   const changeToggle = () => {
     if (!toggle) {
@@ -68,13 +65,14 @@ const DashboardNav = ({ body }) => {
           >
             <span className="fa fa-user"></span> Dashboard
           </a>
-          <a className={route === "/dashboard" ? "" : "active"} href="/crashes">
+          <a className={route === "/crashes" ? "active" : ""} href="/crashes">
             {" "}
             <span className="fa fa-car"></span> Crashes
           </a>
-          <a href="#main">
+          <a className={route === "/reports" ? "active" : ""} href="/reports">
             {" "}
-            <span className="fa fa-institution"></span> Accident Reports
+            <span className="fa fa-institution"></span> Reports{" "}
+            <span className="text-danger">(1)</span>
           </a>
           <a href="#main">
             {" "}
@@ -103,11 +101,6 @@ const DashboardNav = ({ body }) => {
             style={{ width: 200 }}
           >
             <h3 className="">Responders Dashboard</h3>
-          </div>
-          <div>
-            <button onClick={() => audio.pause()}>
-              Accept alarm
-            </button>
           </div>
           <div className="ml-auto d-flex " id="navbarSupportedContent">
             <a href="#main">

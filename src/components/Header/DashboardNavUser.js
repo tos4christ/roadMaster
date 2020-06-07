@@ -39,30 +39,23 @@ const DashboardNavUser = ({ body }) => {
             alt="r-logo"
             className="rounded-circle my-2 r-logo"
           />
-          <div className="mx-auto" style={{ width: 100 }}>
-            <h5 className="text-dark font-weight-bold">
-              User
-            </h5>
+          <div className="mx-auto" style={{ width: 190 }}>
+            <h5 className="text-dark font-weight-bold">User (120 coins)</h5>
           </div>
         </div>
         <div className="bg-light mt-4">
           <a
-            className={route === "/dashboard" ? "active" : ""}
-            href="/dashboard"
+            className={route === "/user-dashboard" ? "active" : ""}
+            href="/user-dashboard"
           >
-            <span className="fa fa-user"></span> Dashboard
+            <span className="fa fa-user"></span> SOS
           </a>
-          <a className={route === "/dashboard" ? "" : "active"} href="/crashes">
+          <a
+            className={route === "/buy-coins" ? "active" : ""}
+            href="/buy-coins"
+          >
             {" "}
-            <span className="fa fa-car"></span> Crashes
-          </a>
-          <a href="#main">
-            {" "}
-            <span className="fa fa-institution"></span> Accident Reports
-          </a>
-          <a href="#main">
-            {" "}
-            <span className="fa fa-list"> </span> Summary
+            <span className="fa fa-car"></span> Buy Coins
           </a>
           <a href="/">
             {" "}
