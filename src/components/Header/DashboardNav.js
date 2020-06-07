@@ -3,17 +3,20 @@ import { useHistory } from "react-router-dom";
 import logo from "../../assets/img/logo.JPG";
 import rlogo from "../../assets/img/responderLogo.JPG";
 import socket from "../../utility/socketioConnection";
+import emergencyAlert from "../../assets/audio/emergency_alert";
 
 const DashboardNav = ({ body }) => {
   const history = useHistory();
   const [toggle, setToggle] = useState(false);
   const route = history.location.pathname;
+  const audio = new Audio(emergencyAlert);
 
   // socket.io implementation
   const unitName = localStorage.getItem("nameOfUnit");
   socket.on(unitName, (data) => {
     const { accidentLocation, user } = data;
     const message = `${accidentLocation.lat}, ${accidentLocation.lon}`;
+    audio.play();
     alert(`There is an accident at this location: ${message}`);
     alert(`These are the user's details
             bloodType: ${user.bloodType}
@@ -102,6 +105,9 @@ const DashboardNav = ({ body }) => {
           >
             <h3 className="">Responders Dashboard</h3>
           </div>
+          <button onClick={() => audio.pause()}>
+            Accept Alarms
+          </button>
           <div className="ml-auto d-flex " id="navbarSupportedContent">
             <a href="#main">
               <h2>
