@@ -11,10 +11,8 @@ const DashboardNav = ({ body }) => {
 
    // socket.io implementation
  const unitName = localStorage.getItem('nameOfUnit');
- console.log(unitName)
  socket.on(unitName, (data) => {
    const { accidentLocation, user } = data;
-   console.log(user);
    const message = `${accidentLocation.lat}, ${accidentLocation.lon}`;
    alert(`There is an accident at this location: ${message}`);
    alert(`These are the user's details

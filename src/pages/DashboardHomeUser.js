@@ -27,7 +27,7 @@ const DashboardHomeUser = () => {
         }
       })
       .then(res => res.json())
-      .then(response => console.log(response))
+      .then(response => response)
       .catch(e => console.error(e));
       
     }  
@@ -40,7 +40,6 @@ const DashboardHomeUser = () => {
         lat: position.coords.latitude,
         lon: position.coords.longitude
       };
-      console.log(accidentLocation, 'this location causing disparity');
       const userId = localStorage.getItem('userId');
       forwardToServer(accidentLocation, userId);
     }  

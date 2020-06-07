@@ -34,7 +34,6 @@ const Login = () => {
     })
     .then( res => res.json())
     .then( response => {
-      console.log(response.data.responderName, 'this responder')
       localStorage.setItem('nameOfUnit', response.data.responderName);
       socket.emit('responderSignin', {nameOfUnit: response.data.responderName});
       history.push('/dashboard');

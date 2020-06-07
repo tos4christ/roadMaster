@@ -88,12 +88,11 @@ const Register = () => {
     })
     .then( (res) => res.json())
     .then( (response) => {
-      console.log(response);
       ls.set('token', response.data.token);
       // This would push to the signin page for the user to now login
       history.push(`/user-login`);
     })
-    .catch( e => console.log(e));
+    .catch( e => console.error(e));
   }
   return (
     <div className="py-4 responders-bg container-fluid bg-light">

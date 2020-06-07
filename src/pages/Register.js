@@ -33,7 +33,6 @@ const Register = () => {
         lat: position.coords.latitude,
         lon: position.coords.longitude
       }
-      console.log('Loc', accidentLocation);
       setGeolocation(accidentLocation);
       setButtonText('Added Successfully! Thanks')
     }
@@ -84,9 +83,7 @@ const Register = () => {
       }
     })
     .then( (res) => res.json())
-    .then( (response) => {
-      console.log(response);
-      
+    .then( (response) => {     
       // This would push to the signin page for the user to now login
       history.push(`/login`);
     })
