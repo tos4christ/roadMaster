@@ -2,26 +2,11 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/img/logo.JPG";
 import rlogo from "../../assets/img/responderLogo.JPG";
-import socket from "../../utility/socketioConnection";
 
-const DashboardNav = ({ body }) => {
+const DashboardNavUser = ({ body }) => {
   const history = useHistory();
   const [toggle, setToggle] = useState(false);
   const route = history.location.pathname;
-
-   // socket.io implementation
- const unitName = localStorage.getItem('nameOfUnit');
- console.log(unitName)
- socket.on(unitName, (data) => {
-   const { accidentLocation, user } = data;
-   console.log(user);
-   const message = `${accidentLocation.lat}, ${accidentLocation.lon}`;
-   alert(`There is an accident at this location: ${message}`);
-   alert(`These are the user's details
-            bloodType: ${user.bloodType}
-          `);
-   // response.append(`<p> There is an accident at this location: ${message} </p>`);
- });
 
   const changeToggle = () => {
     if (!toggle) {
@@ -56,7 +41,7 @@ const DashboardNav = ({ body }) => {
           />
           <div className="mx-auto" style={{ width: 100 }}>
             <h5 className="text-dark font-weight-bold">
-              Ikoyi Fire Service Unit
+              User
             </h5>
           </div>
         </div>
@@ -101,7 +86,11 @@ const DashboardNav = ({ body }) => {
             id="navbarSupportedContent"
             style={{ width: 200 }}
           >
-            <h3 className="">Responders Dashboard</h3>
+            <h3 className="">Users Dashboard</h3>
+          </div>
+          <div>
+            {/* former button area */}
+            <span id="display"></span>
           </div>
           <div className="ml-auto d-flex " id="navbarSupportedContent">
             <a href="#main">
@@ -128,4 +117,4 @@ const DashboardNav = ({ body }) => {
   );
 };
 
-export default DashboardNav;
+export default DashboardNavUser;

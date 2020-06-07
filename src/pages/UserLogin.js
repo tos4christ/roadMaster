@@ -21,7 +21,6 @@ const UserLogin = () => {
     e.preventDefault();
     const url = "https://covid-19-tos4christ.herokuapp.com/api/v1/on-covid-19/signin";
     const data = {email, password};
-    console.log(data);
     fetch(url, {
       method: 'POST',
       mode: 'cors',
@@ -35,7 +34,7 @@ const UserLogin = () => {
       localStorage.setItem('userId', response.data.userId);
       socket.emit('userSignin', {name: response.data.userName})
       // ls.set('userId', response.data.userId)
-      history.push('/dashboard');
+      history.push('/user-dashboard');
     })
     .catch( error => console.error(error.message))
   }
@@ -68,7 +67,7 @@ const UserLogin = () => {
             <Button 
             id=''
             text={"Login"}
-            onClick={ () => console.log(true)}
+            onClick={ () => "coming"}
              />
           </form>
         </div>

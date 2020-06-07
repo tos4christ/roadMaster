@@ -5,20 +5,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserRegister from "./pages/UserRegister";
 import DashboardHome from "./pages/DashboardHome";
+import DashboardHomeUser from "./pages/DashboardHomeUser";
 import UserLogin from "./pages/UserLogin"
 import DashboardCrashes from "./pages/DashboardCrashes";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import socket from './utility/socketioConnection';
-
- // socket.io implementation
- const unitName = localStorage.getItem('nameOfUnit');
- socket.on(unitName, (data) => {
-   console.log(data);
-   const { accidentLocation } = data;
-   const message = `${accidentLocation.lat}, ${accidentLocation.lon}`;
-   alert(`There is an accident at this location: ${message}`);
-   // response.append(`<p> There is an accident at this location: ${message} </p>`);
- });
 
 const App = () => {
   return (
@@ -44,6 +34,9 @@ const App = () => {
         </Route>
         <Route path="/dashboard">
           <DashboardHome />
+        </Route>
+        <Route path="/user-dashboard">
+          <DashboardHomeUser />
         </Route>
         <Route path="/crashes">
           <DashboardCrashes />
