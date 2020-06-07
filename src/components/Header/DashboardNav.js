@@ -3,26 +3,47 @@ import { useHistory } from "react-router-dom";
 import logo from "../../assets/img/logo.JPG";
 import rlogo from "../../assets/img/responderLogo.JPG";
 import socket from "../../utility/socketioConnection";
-import emergencyAlert from "../../assets/audio/emergency_alert";
+import emergencyAlert from "../../assets/audio/emergency_alert.mp3";
+import $ from "jquery";
+import 'popper.js/dist/popper';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 const DashboardNav = ({ body }) => {
   const history = useHistory();
   const [toggle, setToggle] = useState(false);
+  let [location, setLocation] = useState("");
+  let [bloodType, setBloodType] = useState("");
+  let [genotype, setGenoType] = useState("");
+  let [nextOfKinNum, setNextOfKinNum] = useState("");
+  let [emNUm, setEmNum] = useState("");
+  let [Killnessess, setKIllnesses] = useState("");
+  let [resAdd, setResAdd] = useState("");
+  let [name, setName] = useState("");
   const route = history.location.pathname;
   const audio = new Audio(emergencyAlert);
 
+  // function to display when the reply gets back
+  const sosAlert =  function(data) {
+    const { user, accidentLocation } = data;
+    const loc = `lat: ${accidentLocation.lat} , lon: ${accidentLocation.lon}`;
+    setLocation(loc);
+    setBloodType(user.bloodType);
+    setGenoType(user.genotype);
+    setNextOfKinNum(user.nextofkinNum);
+    setEmNum(user.emergencyNum);
+    setKIllnesses(user.knownIllnesses);
+    setResAdd(user.residentialAdd);
+    setName(user.name);
+    audio.play();
+    $("#myModal").modal({
+      keyboard: true
+    })
+    $("#myModal").modal("show");
+  };
+
   // socket.io implementation
   const unitName = localStorage.getItem("nameOfUnit");
-  socket.on(unitName, (data) => {
-    const { accidentLocation, user } = data;
-    const message = `${accidentLocation.lat}, ${accidentLocation.lon}`;
-    audio.play();
-    alert(`There is an accident at this location: ${message}`);
-    alert(`These are the user's details
-            bloodType: ${user.bloodType}
-          `);
-    // response.append(`<p> There is an accident at this location: ${message} </p>`);
-  });
+  socket.on(unitName, sosAlert);
 
   const changeToggle = () => {
     if (!toggle) {
@@ -47,6 +68,38 @@ const DashboardNav = ({ body }) => {
   }
   return (
     <div>
+      <button style={{display: "none"}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Open modal
+      </button>
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">          
+            <div class="modal-header">
+              <h4 class="modal-title">Dear Responder</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p>There is an accident at this location: <a href="#main"> {location}</a></p>
+              <h3> Victim details below</h3>
+              <div>
+              <p>Name: {name}</p>
+              <p>Blood type: {bloodType}</p>
+              <p>Genotype: {genotype}</p>
+              <p>Next of kin phone: {nextOfKinNum}</p>
+              <p>Emergency phone: {emNUm}</p>
+              <p>Known Illnessess: {Killnessess[0]}</p>
+              <p>Residential address: {resAdd}</p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+            <button className="btn btn-success" onClick={() => audio.pause()}>
+            Accept Alarms
+          </button>
+          </div>
+        </div>
+      </div>
       <div id="mySidenav" className="sidenav">
         <div className="text-center">
           <img src={logo} alt="logo" />
@@ -105,9 +158,6 @@ const DashboardNav = ({ body }) => {
           >
             <h3 className="">Responders Dashboard</h3>
           </div>
-          <button onClick={() => audio.pause()}>
-            Accept Alarms
-          </button>
           <div className="ml-auto d-flex " id="navbarSupportedContent">
             <a href="#main">
               <h2>
